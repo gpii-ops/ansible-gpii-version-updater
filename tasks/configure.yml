@@ -1,25 +1,29 @@
 ---
-- name: Create .ssh/
+- name: Ensure deploy user exists
+  user:
+    name: deploy
+
+- name: Create gpii-ci-ssh/
   file:
-    path: /home/gitlab-runner/.ssh
+    path: /home/deploy/gpii-ci-ssh
     state: directory
-    owner: gitlab-runner
-    group: gitlab-runner
+    owner: deploy
+    group: deploy
     mode: 0700
 
-- name: Configure .ssh/known_hosts
+- name: Configure gpii-ci-ssh/known_hosts
   copy:
     src: files/ssh_known_hosts
-    dest: ~gitlab-runner/.ssh/known_hosts
-    owner: gitlab-runner
-    group: gitlab-runner
+    dest: /home/deploy/gpii-ci-ssh/known_hosts
+    owner: deploy
+    group: deploy
     mode: 0644
     backup: yes
 
-- name: Configure .ssh/config
+- name: Configure gpii-ci-ssh/config
   copy:
     src: files/ssh_config
-    dest: ~gitlab-runner/.ssh/config
-    owner: gitlab-runner
-    group: gitlab-runner
+    dest: /home/deploy/gpii-ci-ssh/config
+    owner: deploy
+    group: deploy
     mode: 0644
