@@ -1,0 +1,3 @@
+---
+- src: https://github.com/idi-ops/ansible-docker
+  name: docker

@@ -1,0 +1,5 @@
+ansible
+flake8
+molecule == 1.25.0
+python-vagrant
+setuptools
