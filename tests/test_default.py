@@ -22,12 +22,3 @@ def test_ssh_known_hosts_configured(File, Sudo):
         # error message than .contains() when file does not exist.
         assert ff.exists
         assert ff.contains("github.com")
-
-
-def test_ssh_config_configured(File, Sudo):
-    with Sudo():
-        ff = File("/home/deploy/gpii-ci-ssh/config")
-        # Existence check seems superfluous but it produces a more helpful
-        # error message than .contains() when file does not exist.
-        assert ff.exists
-        assert ff.contains("github.com")

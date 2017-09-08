@@ -20,14 +20,6 @@
     mode: 0644
     backup: yes
 
-- name: Configure gpii-ci-ssh/config
-  copy:
-    src: files/ssh_config
-    dest: /home/deploy/gpii-ci-ssh/config
-    owner: deploy
-    group: deploy
-    mode: 0644
-
 - name: Force pull version-updater image
   docker_image:
     name: gpii/version-updater:latest
