@@ -8,7 +8,7 @@
     path: /home/deploy/gpii-ci-ssh
     state: directory
     owner: deploy
-    group: deploy
+    group: adm
     mode: 0700
 
 - name: Configure gpii-ci-ssh/known_hosts
@@ -16,7 +16,7 @@
     src: files/ssh_known_hosts
     dest: /home/deploy/gpii-ci-ssh/known_hosts
     owner: deploy
-    group: deploy
+    group: adm
     mode: 0644
     backup: yes
 
