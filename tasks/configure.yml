@@ -29,4 +29,4 @@
     restart: yes
     restart_policy: always
     volumes:
-      - /root/gpii-ci-ssh:/root/.ssh:ro,Z
+      - /root/gpii-ci-ssh:/home/app/.ssh:ro,Z
