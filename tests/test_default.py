@@ -5,9 +5,14 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     '.molecule/ansible_inventory').get_hosts('all')
 
 
-def test_docker_runs(Command, Sudo):
+def test_docker_container_runs(Command, Sudo):
     with Sudo():
-        assert Command("docker images").rc == 0
+        cmd = Command("docker ps")
+    assert cmd.rc == 0
+    # We don't want the version-updater to really run and push changes during
+    # testing. Fortunately, the container won't get far because (in testing) it
+    # won't have real a real ssh key to use with Github.
+    assert "gpii/version-updater" in cmd.stdout
 
 
 def test_ssh_known_hosts_configured(File, Sudo):

@@ -27,3 +27,19 @@
     owner: deploy
     group: deploy
     mode: 0644
+
+- name: Force pull version-updater image
+  docker_image:
+    name: gpii/version-updater:latest
+    force: yes
+
+- name: Run version-updater container
+  docker_container:
+    name: version-updater
+    image: gpii/version-updater:latest
+    state: started
+    restart: yes
+    restart_policy: always
+    volumes:
+      - /home/deploy/gpii-ci-ssh/id_rsa.gpii-ci:/root/.ssh/id_rsa.gpii-ci:ro,Z
+      - /home/deploy/gpii-ci-ssh/known_hosts:/root/.ssh/known_hosts:ro,Z

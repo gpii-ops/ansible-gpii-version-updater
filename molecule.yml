@@ -22,5 +22,15 @@ verifier:
   name: testinfra
 
 molecule:
+  test:
+    # Sadly, we must disable the idempotence check because docker_image with
+    # force:yes and docker_container with restart_policy:always -- necessary to
+    # ensure things are up-to-date -- always return 'changed' status.
+    sequence:
+      - destroy
+      - syntax
+      - create
+      - converge
+      - verify
   ignore_paths:
     - venv
