@@ -29,5 +29,4 @@
     restart: yes
     restart_policy: always
     volumes:
-      - /root/gpii-ci-ssh/id_rsa.gpii-ci:/root/.ssh/id_rsa.gpii-ci:ro,Z
-      - /root/gpii-ci-ssh/known_hosts:/root/.ssh/known_hosts:ro,Z
+      - /root/gpii-ci-ssh:/root/.ssh:ro,Z
