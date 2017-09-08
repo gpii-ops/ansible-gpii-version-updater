@@ -17,7 +17,7 @@ def test_docker_container_runs(Command, Sudo):
 
 def test_ssh_known_hosts_configured(File, Sudo):
     with Sudo():
-        ff = File("/home/deploy/gpii-ci-ssh/known_hosts")
+        ff = File("/root/gpii-ci-ssh/known_hosts")
         # Existence check seems superfluous but it produces a more helpful
         # error message than .contains() when file does not exist.
         assert ff.exists
