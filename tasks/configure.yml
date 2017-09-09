@@ -1,18 +1,22 @@
 ---
+- name: Ensure deploy user exists
+  user:
+    name: deploy
+
 - name: Create gpii-ci-ssh/
   file:
-    path: /root/gpii-ci-ssh
+    path: /home/deploy/gpii-ci-ssh
     state: directory
-    owner: root
-    group: root
+    owner: deploy
+    group: adm
     mode: 0700
 
 - name: Configure gpii-ci-ssh/known_hosts
   copy:
     src: files/ssh_known_hosts
-    dest: /root/gpii-ci-ssh/known_hosts
-    owner: root
-    group: root
+    dest: /home/deploy/gpii-ci-ssh/known_hosts
+    owner: deploy
+    group: adm
     mode: 0644
     backup: yes
 
@@ -29,4 +33,4 @@
     restart: yes
     restart_policy: always
     volumes:
-      - /root/gpii-ci-ssh:/home/app/.ssh:ro,Z
+      - /home/deploy/gpii-ci-ssh:/home/app/.ssh:ro,Z
