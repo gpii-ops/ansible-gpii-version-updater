@@ -1,5 +1,5 @@
-ansible
+ansible < 2.4  # testinfra + molecule isn't working with ansible 2.4 yet
 flake8
-molecule == 1.25.0
+molecule < 2  # Molecule 2.x requires some changes to this role
 python-vagrant
 setuptools
