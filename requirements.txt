@@ -1,5 +1,7 @@
-ansible < 2.4  # testinfra + molecule isn't working with ansible 2.4 yet
+ansible
+ansible-lint >= 3.4.22  # https://issues.gpii.net/browse/GPII-3142
 flake8
-molecule < 2  # Molecule 2.x requires some changes to this role
+molecule == 1.25.1
 python-vagrant
 setuptools
+testinfra >= 1.7.1  # https://github.com/philpep/testinfra/issues/249
