@@ -20,6 +20,14 @@
     mode: 0644
     backup: yes
 
+- name: Configure gcr_uploader_creds.json
+  copy:
+    content: "{{ gpii_version_updater_gcr_uploader_creds | mandatory }}"
+    dest: /home/deploy/gcr_uploader_creds.json
+    owner: deploy
+    group: adm
+    mode: 0700
+
 - name: Force pull version-updater image
   docker_image:
     name: gpii/version-updater:latest

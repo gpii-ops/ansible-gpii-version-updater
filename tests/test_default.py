@@ -22,3 +22,12 @@ def test_ssh_known_hosts_configured(host):
         # error message than .contains() when file does not exist.
         assert ff.exists
         assert ff.contains("github.com")
+
+
+def test_gcr_uploader_creds_configured(host):
+    with host.sudo():
+        ff = host.file("/home/deploy/gcr_uploader_creds.json")
+        # Existence check seems superfluous but it produces a more helpful
+        # error message than .contains() when file does not exist.
+        assert ff.exists
+        assert ff.contains("gcr-uploader@")
