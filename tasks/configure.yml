@@ -40,5 +40,8 @@
     state: started
     restart: yes
     restart_policy: always
+    privileged: true
     volumes:
-      - /home/deploy/gpii-ci-ssh:/home/app/.ssh:ro,Z
+      - /home/deploy/gpii-ci-ssh:/root/.ssh:ro,Z
+      - /home/deploy/gcr_uploader_creds.json:/home/app/creds.json:ro,Z
+      - version-updater-docker-cache:/var/lib/docker
