@@ -4,4 +4,7 @@ flake8
 molecule == 1.25.1
 python-vagrant
 setuptools
-testinfra >= 1.7.1  # https://github.com/philpep/testinfra/issues/249
+# >= 1.7.1 because of https://github.com/philpep/testinfra/issues/249
+# < 2.0.0 because testinfra changed its approach but I don't want to deal with a
+# molecule upgrade etc.
+testinfra >= 1.7.1, < 2.0.0
